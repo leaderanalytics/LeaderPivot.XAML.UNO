@@ -1,0 +1,15 @@
+﻿global using CommunityToolkit.Mvvm.Input;
+global using System.Collections;
+global using System.ComponentModel;
+global using System.Globalization;
+global using System.Reflection;
+global using System.Runtime.CompilerServices;
+global using System.Windows;
+global using System.Windows.Input;
+global using System.Runtime.InteropServices.WindowsRuntime;
+global using Microsoft.UI.Xaml;
+global using Microsoft.UI.Xaml.Controls;
+global using Microsoft.UI.Xaml.Data;
+global using Microsoft.UI.Xaml.Documents;
+global using Microsoft.UI.Xaml.Input;
+global using Microsoft.UI.Xaml.Media;

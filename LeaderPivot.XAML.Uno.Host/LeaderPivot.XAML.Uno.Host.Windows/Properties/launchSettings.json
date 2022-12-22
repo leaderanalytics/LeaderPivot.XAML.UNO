@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "LeaderPivot.XAML.Uno.Host.Windows": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LeaderPivot.XAML.Uno.Host.Shared", "LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.shproj", "{6279C845-92F8-4333-AB99-3D213163593C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{B751D56F-5B77-4A2F-AB90-DAFC30D338B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderPivot.XAML.Uno.Host.Wasm", "LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Wasm\LeaderPivot.XAML.Uno.Host.Wasm.csproj", "{8F08A470-735D-4F79-84A8-7F651555B4C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderPivot.XAML.Uno.Host.Skia.Gtk", "LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Skia.Gtk\LeaderPivot.XAML.Uno.Host.Skia.Gtk.csproj", "{02E86797-E30F-47CB-8428-842A28DA6B90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderPivot.XAML.Uno.Host.Windows", "LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Windows\LeaderPivot.XAML.Uno.Host.Windows.csproj", "{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeaderPivot.XAML.Uno", "LeaderPivot.XAML.Uno\LeaderPivot.XAML.Uno.csproj", "{CA8B25B3-0DD4-4504-A609-618E655204EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|arm64 = Debug|arm64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|arm64 = Release|arm64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|arm64.Build.0 = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|x64.Build.0 = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|arm64.ActiveCfg = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|arm64.Build.0 = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|x64.ActiveCfg = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|x64.Build.0 = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F08A470-735D-4F79-84A8-7F651555B4C6}.Release|x86.Build.0 = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|arm64.Build.0 = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|x64.Build.0 = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Debug|x86.Build.0 = Debug|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|arm64.ActiveCfg = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|arm64.Build.0 = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|x64.ActiveCfg = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|x64.Build.0 = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|x86.ActiveCfg = Release|Any CPU
+		{02E86797-E30F-47CB-8428-842A28DA6B90}.Release|x86.Build.0 = Release|Any CPU
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|Any CPU.Build.0 = Debug|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|arm64.ActiveCfg = Debug|arm64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|arm64.Build.0 = Debug|arm64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|arm64.Deploy.0 = Debug|arm64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|x64.ActiveCfg = Debug|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|x64.Build.0 = Debug|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|x64.Deploy.0 = Debug|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|x86.ActiveCfg = Debug|x86
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|x86.Build.0 = Debug|x86
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Debug|x86.Deploy.0 = Debug|x86
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|Any CPU.ActiveCfg = Release|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|Any CPU.Build.0 = Release|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|Any CPU.Deploy.0 = Release|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|arm64.ActiveCfg = Release|arm64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|arm64.Build.0 = Release|arm64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|arm64.Deploy.0 = Release|arm64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|x64.ActiveCfg = Release|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|x64.Build.0 = Release|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|x64.Deploy.0 = Release|x64
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|x86.ActiveCfg = Release|x86
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|x86.Build.0 = Release|x86
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D}.Release|x86.Deploy.0 = Release|x86
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|arm64.Build.0 = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|x64.Build.0 = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|arm64.ActiveCfg = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|arm64.Build.0 = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|x64.ActiveCfg = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|x64.Build.0 = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA8B25B3-0DD4-4504-A609-618E655204EE}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8F08A470-735D-4F79-84A8-7F651555B4C6} = {B751D56F-5B77-4A2F-AB90-DAFC30D338B8}
+		{02E86797-E30F-47CB-8428-842A28DA6B90} = {B751D56F-5B77-4A2F-AB90-DAFC30D338B8}
+		{D0FAD871-8164-4CFE-AE79-22F6B7F1DE4D} = {B751D56F-5B77-4A2F-AB90-DAFC30D338B8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {479E1F45-531E-4209-9EA4-D05D836A3F7E}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems*{02e86797-e30f-47cb-8428-842a28da6b90}*SharedItemsImports = 5
+		LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
+		LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems*{8f08a470-735d-4f79-84a8-7f651555b4c6}*SharedItemsImports = 5
+		LeaderPivot.XAML.Uno.Host\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems*{d0fad871-8164-4cfe-ae79-22f6b7f1de4d}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal
