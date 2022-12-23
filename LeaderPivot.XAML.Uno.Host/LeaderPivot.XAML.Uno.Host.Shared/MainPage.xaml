@@ -5,15 +5,17 @@
     xmlns:local="using:LeaderPivot.XAML.Uno.Host"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:leaderPivot="clr-namespace:LeaderAnalytics.LeaderPivot.XAML.Uno;assembly=LeaderAnalytics.LeaderPivot.XAML.Uno"
     mc:Ignorable="d"    
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <!--xmlns:leaderPivot="using:LeaderPivot.XAML.Uno"-->
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-      <TextBlock Text="This is the shared app" Margin="20" FontSize="30" />
-        <!--<leaderPivot:LeaderPivotControl></leaderPivot:LeaderPivotControl>-->
+        <TextBlock Text="Hello, world!" Margin="20" FontSize="30" />
+        
+        <leaderPivot:LeaderPivotControl Grid.Row="1"></leaderPivot:LeaderPivotControl>
     </Grid>
 </Page>

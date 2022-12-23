@@ -6,7 +6,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-
 namespace LeaderAnalytics.LeaderPivot.XAML.Uno.Themes;
 public sealed partial class Generic : ResourceDictionary
 {

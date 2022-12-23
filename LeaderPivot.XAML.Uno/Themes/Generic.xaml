@@ -9,7 +9,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:LeaderPivotControl">
                     <Grid>
-                        <TextBlock Text="This is LeaderPivotControl" />
+                        <TextBlock Text="My templated control !" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

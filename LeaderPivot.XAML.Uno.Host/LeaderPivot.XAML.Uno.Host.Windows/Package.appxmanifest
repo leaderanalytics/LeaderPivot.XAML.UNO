@@ -7,7 +7,7 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="3dad7880-bc60-446c-b815-f1ecc8cb0198"
+    Name="e5261c26-18f4-4f7c-813c-a91427aa5037"
     Publisher="O=LeaderPivot.XAML.Uno.Host"
     Version="1.0.0.0" />
 
