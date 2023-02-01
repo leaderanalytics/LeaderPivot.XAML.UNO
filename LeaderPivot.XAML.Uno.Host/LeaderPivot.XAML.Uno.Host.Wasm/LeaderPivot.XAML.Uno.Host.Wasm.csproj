@@ -12,16 +12,22 @@
     <DebugSymbols>true</DebugSymbols>
     <!--
 		IL Linking is disabled in Debug configuration.
-		When building in Release, see https://platform.uno/docs/articles/features/using-il-linker-webassembly.html
+		When building in Release, see https://aka.platform.uno/wasm-il-linker
 		-->
     <WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <!-- XAML Resource trimming https://aka.platform.uno/xaml-trimming -->
+    <!--<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>-->
+    <!-- Improve performance with AOT builds https://aka.platform.uno/wasm-aot -->
+    <!-- <WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode> -->
+    <!-- Temporarily uncomment to generate an AOT profile https://aka.platform.uno/wasm-aot-profile -->
+    <!-- <WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile> -->
+  </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <UpToDateCheckInput Include="..\LeaderPivot.XAML.Uno.Host.Shared\**\*.xaml" />
-  </ItemGroup>
+		
+	</ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WasmCSS\Fonts.css" />
     <EmbeddedResource Include="WasmScripts\AppManifest.js" />
@@ -44,15 +50,15 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
     <PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.4.0" />
-    <PackageReference Include="Uno.WinUI.WebAssembly" Version="4.6.19" />
-    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.6.19" Condition="'$(Configuration)'=='Debug'" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="7.0.3" />
-    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.3" />
-    <PackageReference Include="Uno.WinUI.Lottie" Version="4.6.19" />
+    <PackageReference Include="Uno.WinUI.WebAssembly" Version="4.7.30" />
+    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.30" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.30" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="7.0.11" />
+    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.11" />
+    <PackageReference Include="Uno.WinUI.Lottie" Version="4.7.30" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LeaderPivot.XAML.Uno\LeaderPivot.XAML.Uno.csproj" />
+    <ProjectReference Include="..\LeaderPivot.XAML.UNO.Host\LeaderPivot.XAML.UNO.Host.csproj" />
   </ItemGroup>
-  <Import Project="..\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems" Label="Shared" Condition="Exists('..\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems')" />
+  <Import Project="..\LeaderPivot.XAML.UNO.Host.Base\base.props" />
 </Project>

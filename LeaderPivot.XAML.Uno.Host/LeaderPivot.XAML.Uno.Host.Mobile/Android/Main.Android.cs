@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LeaderPivot.XAML.Uno.Host.Droid;
+namespace LeaderPivot.XAML.UNO.Host.Droid;
 [global::Android.App.ApplicationAttribute(
     Label = "@string/ApplicationName",
     Icon = "@mipmap/icon",

@@ -1,12 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-		<TargetFrameworks>net7.0-android</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);net7.0-ios</TargetFrameworks>
+		
+		
 		<TargetFrameworks>$(TargetFrameworks);net7.0-maccatalyst</TargetFrameworks>
 
-		<!-- Disabled because of https://github.com/xamarin/xamarin-macios/issues/16401--><!--
 		
-		--><SingleProject>true</SingleProject><OutputType>Exe</OutputType><!-- Debugger workaround https://github.com/dotnet/maui-samples/blob/8aa6b8780b12e97b157514c3bdc54bb4a13001cd/HelloMacCatalyst/HelloMacCatalyst.csproj#L7 --><!-- <MtouchExtraArgs Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">$(MtouchExtraArgs) -setenv:MONO_THREADS_SUSPEND=preemptive</MtouchExtraArgs> --><!-- Required for C# Hot Reload, except for macOS which uses CoreCLR (not Mono) --><!-- Disabled because of https://github.com/dotnet/runtime/issues/68808 --><!--<UseInterpreter Condition="'$(Configuration)' == 'Debug' and '$(TargetFramework)' != 'net7.0-maccatalyst' and '$(TargetFramework)' != 'net7.0-macos'">True</UseInterpreter>--><IsUnoHead>true</IsUnoHead><SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">14.2</SupportedOSPlatformVersion><SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">14.0</SupportedOSPlatformVersion><SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">21.0</SupportedOSPlatformVersion><SupportedOSPlatformVersion Condition="'$(TargetFramework)'=='net7.0-macos'">10.14</SupportedOSPlatformVersion></PropertyGroup>
+
+  	</PropertyGroup>
+  <PropertyGroup>
+    <SingleProject>true</SingleProject>
+    <OutputType>Exe</OutputType>
+    <!-- Display name -->
+    <ApplicationTitle>LeaderPivot.XAML.UNO.Host</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>com.companyname.LeaderPivot.XAML.UNO.Host</ApplicationId>
+    <ApplicationIdGuid>e416f946-3acf-43d8-b6ec-4442c8e29d4d</ApplicationIdGuid>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <IsUnoHead>true</IsUnoHead>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">14.2</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">21.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)'=='net7.0-macos'">10.14</SupportedOSPlatformVersion>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(RuntimeIdentifier)'==''">
     <!-- Default values for command line builds -->
     <RuntimeIdentifier Condition="'$(TargetFramework)' == 'net7.0-ios'">iossimulator-x64</RuntimeIdentifier>
@@ -14,17 +31,18 @@
     <RuntimeIdentifier Condition="'$(TargetFramework)' == 'net7.0-macos'">osx-x64</RuntimeIdentifier>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Uno.WinUI" Version="4.6.19" />
-    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.6.19" Condition="'$(Configuration)'=='Debug'" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
+    <PackageReference Include="Uno.WinUI" Version="4.7.30" />
+    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.30" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.30" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
-    <PackageReference Include="Uno.WinUI.Lottie" Version="4.6.19" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\LeaderPivot.XAML.Uno\LeaderPivot.XAML.Uno.csproj" />
+    <PackageReference Include="Uno.WinUI.Lottie" Version="4.7.30" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(TargetFramework)'=='net7.0-android'">
+      <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- Workaround for .NET Android issue https://github.com/xamarin/xamarin-android/issues/7736 -->
+        <RuntimeIdentifier>android-arm64</RuntimeIdentifier>
+      </PropertyGroup>
       <ItemGroup>
         <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0.4" />
         <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.36" />
@@ -62,8 +80,12 @@
     </When>
     <When Condition="'$(TargetFramework)'=='net7.0-macos'">
       <PropertyGroup>
+        <TrimMode Condition="'$(Configuration)'=='Release'">link</TrimMode>
       </PropertyGroup>
     </When>
   </Choose>
-  <Import Project="..\LeaderPivot.XAML.Uno.Host.Shared\LeaderPivot.XAML.Uno.Host.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\LeaderPivot.XAML.UNO.Host\LeaderPivot.XAML.UNO.Host.csproj" />
+  </ItemGroup>
+  <Import Project="..\LeaderPivot.XAML.UNO.Host.Base\base.props" />
 </Project>

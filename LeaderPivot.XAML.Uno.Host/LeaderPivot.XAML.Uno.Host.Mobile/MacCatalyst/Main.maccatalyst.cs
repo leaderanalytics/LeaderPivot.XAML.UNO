@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace LeaderPivot.XAML.Uno.Host;
+namespace LeaderPivot.XAML.UNO.Host;
 public class EntryPoint
 {
     // This is the main entry point of the application.

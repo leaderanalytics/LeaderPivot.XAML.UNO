@@ -2,8 +2,8 @@
 using System;
 using Uno.UI.Runtime.Skia;
 
-namespace LeaderPivot.XAML.Uno.Host.Skia.Gtk;
-internal class Program
+namespace LeaderPivot.XAML.UNO.Host.Skia.Gtk;
+public sealed class Program
 {
     static void Main(string[] args)
     {

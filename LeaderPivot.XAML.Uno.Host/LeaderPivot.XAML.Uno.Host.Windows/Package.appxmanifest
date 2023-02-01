@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="e5261c26-18f4-4f7c-813c-a91427aa5037"
-    Publisher="O=LeaderPivot.XAML.Uno.Host"
+    Name="938466da-657e-45a2-b6da-029f6608e4e4"
+    Publisher="O=LeaderPivot.XAML.UNO.Host"
     Version="1.0.0.0" />
 
   <Properties>
-	<DisplayName>LeaderPivot.XAML.Uno.Host</DisplayName>
-	<PublisherDisplayName>LeaderPivot.XAML.Uno.Host</PublisherDisplayName>
+	<DisplayName>LeaderPivot.XAML.UNO.Host</DisplayName>
+	<PublisherDisplayName>LeaderPivot.XAML.UNO.Host</PublisherDisplayName>
 	<Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,8 +31,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="LeaderPivot.XAML.Uno.Host"
-        Description="LeaderPivot.XAML.Uno.Host"
+        DisplayName="LeaderPivot.XAML.UNO.Host"
+        Description="LeaderPivot.XAML.UNO.Host"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">

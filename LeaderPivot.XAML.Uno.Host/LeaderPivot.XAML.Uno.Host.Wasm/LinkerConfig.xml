@@ -1,5 +1,5 @@
 ﻿<linker>
-  <assembly fullname="LeaderPivot.XAML.Uno.Host.Wasm" />
+  <assembly fullname="LeaderPivot.XAML.UNO.Host.Wasm" />
   <assembly fullname="Uno.UI" />
   <assembly fullname="Microsoft.Extensions.Options" />
 

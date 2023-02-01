@@ -1,7 +1,8 @@
 ﻿using AppKit;
 
-namespace LeaderPivot.XAML.Uno.Host.macOS;
-internal static class MainClass
+namespace LeaderPivot.XAML.UNO.Host;
+// This is the main entry point of the application.
+public class EntryPoint
 {
     static void Main(string[] args)
     {

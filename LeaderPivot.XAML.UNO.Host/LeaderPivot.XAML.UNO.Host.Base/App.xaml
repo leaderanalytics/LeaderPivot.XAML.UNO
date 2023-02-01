@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="LeaderPivot.XAML.Uno.Host.App"
+    x:Class="LeaderPivot.XAML.UNO.Host.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:LeaderPivot.XAML.Uno.Host">
+    xmlns:local="using:LeaderPivot.XAML.UNO.Host">
 	
     <Application.Resources>
         <ResourceDictionary>

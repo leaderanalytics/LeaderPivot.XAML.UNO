@@ -2,6 +2,6 @@
 
     splashScreenImage: "Assets/SplashScreen.png",
     splashScreenColor: "transparent",
-    displayName: "LeaderPivot.XAML.Uno.Host"
+    displayName: "LeaderPivot.XAML.UNO.Host"
 
 }

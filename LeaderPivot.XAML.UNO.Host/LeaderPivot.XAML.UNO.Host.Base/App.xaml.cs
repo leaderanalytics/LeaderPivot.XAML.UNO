@@ -6,14 +6,12 @@ using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 
-namespace LeaderPivot.XAML.Uno.Host;
+namespace LeaderPivot.XAML.UNO.Host;
 /// <summary>
 /// Provides application-specific behavior to supplement the default Application class.
 /// </summary>
 public sealed partial class App : Application
 {
-    private Window _window;
-
     /// <summary>
     /// Initializes the singleton application object.  This is the first line of authored code
     /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -30,6 +28,11 @@ public sealed partial class App : Application
     }
 
     /// <summary>
+    /// Gets the main window of the app.
+    /// </summary>
+    internal static Window MainWindow { get; private set; }
+
+    /// <summary>
     /// Invoked when the application is launched normally by the end user.  Other entry points
     /// will be used such as when the application is launched to open a specific file.
     /// </summary>
@@ -44,17 +47,15 @@ public sealed partial class App : Application
 #endif
 
 #if NET6_0_OR_GREATER && WINDOWS && !HAS_UNO
-        _window = new Window();
-        _window.Activate();
+        MainWindow = new Window();
+        MainWindow.Activate();
 #else
-        _window = Microsoft.UI.Xaml.Window.Current;
+        MainWindow = Microsoft.UI.Xaml.Window.Current;
 #endif
-
-        var rootFrame = _window.Content as Frame;
 
         // Do not repeat app initialization when the Window already has content,
         // just ensure that the window is active
-        if (rootFrame == null)
+        if (MainWindow.Content is not Frame rootFrame)
         {
             // Create a Frame to act as the navigation context and navigate to the first page
             rootFrame = new Frame();
@@ -67,7 +68,7 @@ public sealed partial class App : Application
             }
 
             // Place the frame in the current Window
-            _window.Content = rootFrame;
+            MainWindow.Content = rootFrame;
         }
 
 #if !(NET6_0_OR_GREATER && WINDOWS)
@@ -82,7 +83,7 @@ public sealed partial class App : Application
                 rootFrame.Navigate(typeof(MainPage), args.Arguments);
             }
             // Ensure the current window is active
-            _window.Activate();
+            MainWindow.Activate();
         }
     }
 
@@ -127,7 +128,7 @@ public sealed partial class App : Application
         {
 #if __WASM__
             builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
-#elif __IOS__
+#elif __IOS__ && !__MACCATALYST__
             builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
 #elif NETFX_CORE
             builder.AddDebug();

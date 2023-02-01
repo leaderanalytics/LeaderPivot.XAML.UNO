@@ -1,8 +1,8 @@
 ﻿using Microsoft.UI.Xaml;
 using System;
 
-namespace LeaderPivot.XAML.Uno.Host.Wasm;
-public class Program
+namespace LeaderPivot.XAML.UNO.Host.Wasm;
+public sealed class Program
 {
     private static App _app;
 

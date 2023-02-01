@@ -1,11 +1,22 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices.WindowsRuntime;
 
-namespace LeaderAnalytics.LeaderPivot.XAML.Uno;
-public partial class LeaderPivotControl : UserControl
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
+
+namespace LeaderPivot.XAML.UNO;
+public sealed partial class LeaderPivotControl : Control
 {
+    public LeaderPivotControl()
+    {
+        this.DefaultStyleKey = typeof(LeaderPivotControl);
+    }
 }

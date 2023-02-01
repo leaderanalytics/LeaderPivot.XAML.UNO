@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 
-namespace LeaderPivot.XAML.Uno.Host;
+namespace LeaderPivot.XAML.UNO.Host;
 [Activity(
         MainLauncher = true,
         ConfigurationChanges = global::Uno.UI.ActivityHelper.AllConfigChanges,

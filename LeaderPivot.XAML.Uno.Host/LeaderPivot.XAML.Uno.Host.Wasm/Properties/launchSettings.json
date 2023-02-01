@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "LeaderPivot.XAML.Uno.Host.Wasm": {
+    "LeaderPivot.XAML.UNO.Host.Wasm": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
