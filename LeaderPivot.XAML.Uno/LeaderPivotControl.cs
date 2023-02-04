@@ -12,7 +12,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace LeaderPivot.XAML.UNO;
+namespace LeaderAnalytics.LeaderPivot.XAML.UNO;
 public sealed partial class LeaderPivotControl : Control
 {
     public LeaderPivotControl()

@@ -5,11 +5,16 @@
     xmlns:local="using:LeaderPivot.XAML.UNO.Host"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:leaderPivot="using:LeaderPivot.XAML.UNO"
+    xmlns:leaderPivot="using:LeaderAnalytics.LeaderPivot.XAML.UNO"
     mc:Ignorable="d"    
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <leaderPivot:LeaderPivotControl></leaderPivot:LeaderPivotControl>
+        <TextBlock Text="Boo" Grid.Row="1"/>
     </Grid>
 </Page>
