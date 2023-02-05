@@ -4,3 +4,6 @@ global using System.Linq;
 global using System.Threading.Tasks;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using Microsoft.UI.Xaml;
+global using Microsoft.UI.Xaml.Controls;
+global using System.ComponentModel;
+global using System.Runtime.CompilerServices;

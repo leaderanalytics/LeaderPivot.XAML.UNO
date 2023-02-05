@@ -1,6 +1,6 @@
 ﻿namespace LeaderAnalytics.LeaderPivot.XAML.UNO;
 
-public class PivotViewBuilder<T> : PivotViewBuilder
+public partial class PivotViewBuilder<T> : PivotViewBuilder
 {
     private IEnumerable<Dimension<T>> DimensionsT;
     private IEnumerable<Measure<T>> MeasuresT;
