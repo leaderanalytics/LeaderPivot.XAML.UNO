@@ -41,9 +41,6 @@
     <None Remove="Themes\PivotStyles.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Remove="Themes\PivotStyles.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\LeaderPivot.XAML.UNO\LeaderPivot.XAML.UNO.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Themes\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Themes\PivotStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Themes\Primary.xaml">
