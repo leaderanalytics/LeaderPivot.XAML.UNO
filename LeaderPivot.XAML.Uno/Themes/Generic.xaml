@@ -80,4 +80,24 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local:BaseCell" x:Key="BaseCellStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BaseCell">
+                    
+                    <!-- This border provides cell-specific background. Also proives padding based on value provided by LeaderPivotControl  -->
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                            Padding="{Binding (ui:FrameworkElementExtensions.Ancestor).CellPadding, RelativeSource={RelativeSource Self}}">
+
+                        <Border.Resources>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource RightTextBlockStyle}"></Style>
+                        </Border.Resources>
+                        
+                        <TextBlock Text="{TemplateBinding Content}" Padding="{Binding Padding}" FontSize="{Binding FontSize}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
