@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:LeaderAnalytics.LeaderPivot.XAML.UNO">
+    xmlns:local="using:LeaderAnalytics.LeaderPivot.XAML.UNO"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI">
     
     
 
@@ -49,14 +50,31 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             VerticalAlignment="Top" HorizontalAlignment="Left">
 
-                        <Border BorderBrush="{TemplateBinding CellBorderBrush}"
+                        <Border BorderBrush="{TemplateBinding CellBorderBrush}" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
                                 BorderThickness="{TemplateBinding CellBorderThickness}"
-                                DataContext="{Binding RelativeSource={RelativeSource Self}}" >
+                                DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor), RelativeSource={RelativeSource Self}}" >
 
                             <ScrollViewer x:Name="ContentScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                 <Grid x:Name="PART_Grid" />
                             </ScrollViewer>
                         </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:CellContainer">
+        <Setter Property="Margin" Value="0.00"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CellContainer">
+                    <!-- This border provides uniform BorderBrush and BorderThickness only. -->
+                    <Border Background="Transparent" Padding="0" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                            BorderBrush="{Binding (ui:FrameworkElementExtensions.Ancestor).CellBorderBrush, RelativeSource={RelativeSource Self}}"
+                            BorderThickness="{Binding (ui:FrameworkElementExtensions.Ancestor).CellBorderThickness, RelativeSource={RelativeSource Self}}"
+                            DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor), RelativeSource={RelativeSource Self}}">
+                        <ContentPresenter/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
