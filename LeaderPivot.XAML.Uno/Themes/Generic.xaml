@@ -100,4 +100,41 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local:BaseCell" BasedOn="{StaticResource BaseCellStyle}" x:Key="BaseTotalCellStyle">
+        <Setter Property="Background" Value="LightGray"/>
+    </Style>
+
+    <Style TargetType="local:MeasureCell" BasedOn="{StaticResource BaseCellStyle}">
+    </Style>
+
+    <Style TargetType="local:TotalCell"  BasedOn="{StaticResource BaseTotalCellStyle}">
+    </Style>
+
+    <Style TargetType="local:GrandTotalCell"  BasedOn="{StaticResource BaseTotalCellStyle}">
+    </Style>
+
+    <Style TargetType="local:MeasureLabelCell"  BasedOn="{StaticResource BaseCellStyle}">
+        <!--<Style.Resources>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource LeftTextBlockStyle}"></Style>
+        </Style.Resources>-->
+    </Style>
+
+    <Style TargetType="local:MeasureTotalLabelCell"  BasedOn="{StaticResource BaseTotalCellStyle}">
+        <!--<Style.Resources>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource LeftTextBlockStyle}"></Style>
+        </Style.Resources>-->
+    </Style>
+
+    <Style TargetType="local:TotalHeaderCell"  BasedOn="{StaticResource BaseTotalCellStyle}">
+        <!--<Style.Resources>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource LeftTextBlockStyle}"></Style>
+        </Style.Resources>-->
+    </Style>
+
+    <Style TargetType="local:GrandTotalHeaderCell"  BasedOn="{StaticResource BaseTotalCellStyle}">
+        <!--<Style.Resources>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource LeftTextBlockStyle}"></Style>
+        </Style.Resources>-->
+    </Style>
 </ResourceDictionary>
