@@ -41,6 +41,10 @@
     <None Remove="Themes\PivotStyles.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Remove="Themes\Primary.xaml" />
+    <Page Remove="Themes\Secondary.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\LeaderPivot.XAML.UNO\LeaderPivot.XAML.UNO.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <UpToDateCheckInput Remove="ControlPanel.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Themes\Primary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Themes\Secondary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Update="Themes\Dark.xaml">
@@ -74,12 +87,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Themes\PivotStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Themes\Primary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Themes\Secondary.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

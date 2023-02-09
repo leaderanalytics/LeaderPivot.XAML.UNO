@@ -9,12 +9,25 @@
     mc:Ignorable="d"    
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="CornflowerBlue">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="150"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <leaderPivot:LeaderPivotControl></leaderPivot:LeaderPivotControl>
-        <TextBlock Text="Boo" Grid.Row="1"/>
+
+        <local:ControlPanel x:Name="controlPanel"/>
+
+        <Border Grid.Row="1">
+        
+        <leaderPivot:LeaderPivotControl BorderThickness="6" BorderBrush="Silver" Margin="20"
+                    DisplayGrandTotalOption="{Binding ElementName=controlPanel, Path=DisplayGrandTotalOption}"
+                    DisplayDimensionButtons="{Binding ElementName=controlPanel, Path=DisplayDimensionButtons}"
+                    DisplayMeasureSelectors="{Binding ElementName=controlPanel, Path=DisplayMeasureSelectors}"
+                    DisplayReloadDataButton="{Binding ElementName=controlPanel, Path=DisplayReloadDataButton}"
+                    FontSize="{Binding ElementName=controlPanel, Path=PivotControlFontSize}"
+                    CellPadding="{Binding ElementName=controlPanel, Path=CellPadding}"
+                    ViewBuilder="{Binding ViewBuilder}"
+                    IsBusy="{Binding IsBusy}"/>
+        </Border>
     </Grid>
 </Page>
