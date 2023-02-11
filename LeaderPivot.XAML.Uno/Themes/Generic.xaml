@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LeaderAnalytics.LeaderPivot.XAML.UNO"
     xmlns:ui="using:CommunityToolkit.WinUI.UI"
-    xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers">
+    xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers"
+    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors">
     
     
 
@@ -148,7 +149,7 @@
                             Padding="{Binding (ui:FrameworkElementExtensions.Ancestor).CellPadding, RelativeSource={RelativeSource Self}}"
                             DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor), RelativeSource={RelativeSource Self}}">
                         <StackPanel Orientation="Horizontal">
-                            <Button ui:FrameworkElementExtensions.AncestorType="local:GroupHeaderCell"
+                            <Button ui:FrameworkElementExtensions.AncestorType="local:GroupHeaderCell" x:Name="b1"
                                 DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor), RelativeSource={RelativeSource Self}}"
                                 Command="{Binding ToggleNodeExpansionCommand}" 
                                 CommandParameter="{Binding NodeID}"
@@ -174,6 +175,28 @@
                                 </Button.Resources>
                             </Button>
                             <TextBlock Text="{TemplateBinding Content}" Padding="{Binding Padding}" Margin="0,6,0,0" FontSize="{Binding FontSize}"/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState>
+                                        <VisualState.StateTriggers>
+                                            <triggers:IsEqualStateTrigger Value="{Binding IsExpanded}" To="True"/>
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="b1.Padding" Value="5,7,5,3"/>
+                                            <Setter Target="b1.Content" Value="&#xE936;"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState>
+                                        <VisualState.StateTriggers>
+                                            <triggers:IsEqualStateTrigger Value="{Binding IsExpanded}" To="False"/>
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="b1.Padding" Value="9,4,1,6"/>
+                                            <Setter Target="b1.Content" Value="&#xE937;"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
                         </StackPanel>
                     </Border>
                 </ControlTemplate>
@@ -219,5 +242,71 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style TargetType="local:MeasureContainerCell">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MeasureContainerCell" >
+                    <Border Background="{TemplateBinding Background}" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                            BorderThickness="0"
+                            Padding="{Binding (ui:FrameworkElementExtensions.Ancestor).CellPadding}"
+                            DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor)}">
+                        <ScrollViewer x:Name="ContentScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <Grid x:Name="PART_Grid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Button Content="Reload Data" 
+                                        Style="{TemplateBinding ReloadButtonStyle}" Height="25" Width="80"
+                                        Command="{Binding ReloadDataCommand}" 
+                                        Visibility="{Binding DisplayReloadDataButton, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <ItemsControl ItemsSource="{Binding ViewBuilder.Measures}" Grid.Row="1" Margin="3,10,0,0"
+                                              Visibility="{Binding DisplayMeasureSelectors, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox 
+                                                Content="{Binding Item.DisplayValue}" 
+                                                IsChecked="{Binding IsSelected }" 
+                                                Command="{Binding (ui:FrameworkElementExtensions.Ancestor).ToggleMeasureEnabledCommand}" 
+                                                CommandParameter="{Binding}"
+                                                Style="{Binding (ui:FrameworkElementExtensions.Ancestor).MeasureCheckBoxStyle}" Padding="2" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <CheckBox Content="Grand Totals" Margin="3,0,0,0"
+                                          IsChecked="{Binding ViewBuilder.DisplayGrandTotals}" Command="{Binding ReloadDataCommand}" Padding="2" 
+                                          Visibility="{Binding DisplayGrandTotalOption, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                          Style="{TemplateBinding MeasureCheckBoxStyle}"
+                                          Grid.Row="2" />
+
+                                <local:DimensionContainerCell BorderThickness="0" Margin="0,3,0,0"
+                                    IsRows="True" 
+                                    Dimensions="{Binding ViewBuilder.RowDimensions}" 
+                                    Grid.Row="3"/>
+
+                                
+                                <ComboBox Grid.Row="4" x:Name="HiddenDimensionsComboBox" 
+                                          Style="{TemplateBinding HiddenDimensionsListBoxStyle}"
+                                          Padding="6" Margin="0,6,0,6"
+                                          Text="Hidden Dimensions" 
+                                          
+                                          IsEditable="True"
+                                          DisplayMemberPath="DisplayValue"
+                                          Visibility="{Binding ViewBuilder.HiddenDimensionsVisibility}"
+                                          ItemsSource="{Binding ViewBuilder.HiddenDimensions}"
+                                          SelectedItem="{x:Null}">
+                                    
+                                    
+                                </ComboBox>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

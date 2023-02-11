@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using LeaderAnalytics.LeaderPivot.XAML.UNO;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace LeaderPivot.XAML.WPF.Host;
+namespace LeaderPivot.XAML.UNO.Host;
 
 internal partial class MainWindowViewModel : ObservableObject
 {

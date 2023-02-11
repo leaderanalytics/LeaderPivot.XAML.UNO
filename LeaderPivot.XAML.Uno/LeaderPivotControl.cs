@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using CommunityToolkit.WinUI.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Documents;
@@ -13,6 +14,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace LeaderAnalytics.LeaderPivot.XAML.UNO;
+
 public sealed partial class LeaderPivotControl : Control
 {
     #region Properties
@@ -270,6 +272,7 @@ public sealed partial class LeaderPivotControl : Control
     private byte[,]? table;
     private Grid grid;
     private ICommand toggleNodeExpansionCommand;
+    private bool IsLoaded;
 
     public LeaderPivotControl()
     {
@@ -287,10 +290,28 @@ public sealed partial class LeaderPivotControl : Control
             bool canExecute = !m.IsSelected || ViewBuilder.Measures.Count(x => x.Item.IsEnabled) > 1;
             return canExecute;
         });
+
+        Loaded += OnLoaded;
+    }
+
+    protected async void OnLoaded(object sender, RoutedEventArgs e)
+    { 
+        IsLoaded = true;
+        Loaded -= OnLoaded;
+        await BuildGrid(null);
+    }
+
+    protected override void OnApplyTemplate()
+    {
+        grid = (Grid)GetTemplateChild("PART_Grid");
+        base.OnApplyTemplate();
     }
 
     public async Task BuildGrid(string? nodeID)
     {
+        if(!IsLoaded)
+            return;
+
         // Row span takes precidence over column span.
         // If a cell spans multiple rows, cells in the second and subsequent rows are pushed to the right - not down.
         // A cell is never pushed down to a lower row - it is pushed to the right.  Therefore a cells row index in the matrix is

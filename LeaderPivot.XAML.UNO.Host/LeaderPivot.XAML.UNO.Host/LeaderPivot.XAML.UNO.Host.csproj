@@ -41,6 +41,9 @@
     <None Remove="Themes\PivotStyles.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Remove="Themes\Dark.xaml" />
+    <Page Remove="Themes\Light.xaml" />
+    <Page Remove="Themes\PivotStyles.xaml" />
     <Page Remove="Themes\Primary.xaml" />
     <Page Remove="Themes\Secondary.xaml" />
   </ItemGroup>
@@ -54,12 +57,24 @@
     <UpToDateCheckInput Remove="ControlPanel.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Themes\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Themes\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
+    <Content Include="Themes\PivotStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Themes\Primary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Themes\Secondary.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -78,15 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="ControlPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Themes\Dark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Themes\Light.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Themes\PivotStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
