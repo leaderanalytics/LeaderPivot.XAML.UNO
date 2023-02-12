@@ -245,5 +245,225 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style TargetType="local:MeasureContainerCell">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MeasureContainerCell" >
+                    <Border Background="{TemplateBinding Background}" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                            BorderThickness="0"
+                            Padding="{Binding (ui:FrameworkElementExtensions.Ancestor).CellPadding}"
+                            DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor)}">
+                        <ScrollViewer x:Name="ContentScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <Grid x:Name="PART_Grid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Button Content="Reload Data" 
+                                        Style="{TemplateBinding ReloadButtonStyle}" Height="25" Width="80"
+                                        Command="{Binding ReloadDataCommand}" 
+                                        Visibility="{Binding DisplayReloadDataButton, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                <ItemsControl ItemsSource="{Binding ViewBuilder.Measures}" Grid.Row="1" Margin="3,10,0,0"
+                                              Visibility="{Binding DisplayMeasureSelectors, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox 
+                                                Content="{Binding Item.DisplayValue}" 
+                                                IsChecked="{Binding IsSelected }" 
+                                                Command="{Binding (ui:FrameworkElementExtensions.Ancestor).ToggleMeasureEnabledCommand}" 
+                                                CommandParameter="{Binding}"
+                                                Style="{Binding (ui:FrameworkElementExtensions.Ancestor).MeasureCheckBoxStyle}" Padding="2" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <CheckBox Content="Grand Totals" Margin="3,0,0,0"
+                                          IsChecked="{Binding ViewBuilder.DisplayGrandTotals}" Command="{Binding ReloadDataCommand}" Padding="2" 
+                                          Visibility="{Binding DisplayGrandTotalOption, Converter={StaticResource BoolToVisibilityConverter}}"
+                                          Style="{TemplateBinding MeasureCheckBoxStyle}"
+                                          Grid.Row="2" />
+
+                                <local:DimensionContainerCell BorderThickness="0" Margin="0,3,0,0"
+                                    IsRows="True" 
+                                    Dimensions="{Binding ViewBuilder.RowDimensions}" 
+                                    Grid.Row="3"/>
+
+
+                                <ComboBox Grid.Row="4" x:Name="HiddenDimensionsComboBox" 
+                                          Style="{TemplateBinding HiddenDimensionsListBoxStyle}"
+                                          Padding="6" Margin="0,6,0,6"
+                                          Text="Hidden Dimensions" 
+                                          
+                                          IsEditable="True"
+                                          DisplayMemberPath="DisplayValue"
+                                          Visibility="{Binding ViewBuilder.HiddenDimensionsVisibility}"
+                                          ItemsSource="{Binding ViewBuilder.HiddenDimensions}"
+                                          SelectedItem="{x:Null}">
+
+                                    <Interactions:EventTriggerBehavior EventName="SelectionChanged">
+                                        <Interactions:InvokeCommandAction Command="{Binding DimensionEventCommand}">
+                                            <!--<Interactions:InvokeCommandAction.CommandParameter>
+                                            </Interactions:InvokeCommandAction.CommandParameter>-->
+                                        </Interactions:InvokeCommandAction>
+                                    </Interactions:EventTriggerBehavior>
+                                </ComboBox>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="DimensionButtonItemTemplate">
+        <Border Margin="2,3,2,3">
+            <CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" ui:FrameworkElementExtensions.AncestorType="local:DimensionButton"
+                          Command="{Binding (ui:FrameworkElementExtensions.Ancestor).CheckboxCheckedCommand}"
+                          CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                          Content="{Binding (ui:FrameworkElementExtensions.Ancestor).Content, Converter={StaticResource DimensionActionDescriptionConverter}}">
+
+                <!--<CheckBox.IsChecked>
+                    <MultiBinding Converter="{StaticResource DimensionEventCheckedConverter}" Mode="OneWay" >
+                        <Binding RelativeSource="{RelativeSource AncestorType=local:DimensionButton}" Path="Dimension" Mode="OneWay" />
+                        <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Content" Mode="OneWay"  />
+                    </MultiBinding>
+                </CheckBox.IsChecked>
+                <CheckBox.IsEnabled>
+                    <MultiBinding Converter="{StaticResource DimensionEventEnabledConverter}" Mode="OneWay">
+                        <Binding RelativeSource="{RelativeSource AncestorType=ListBoxItem}" Path="Content" />
+                        <Binding RelativeSource="{RelativeSource AncestorType=local:DimensionContainerCell}" Path="." />
+                    </MultiBinding>
+                </CheckBox.IsEnabled>-->
+            </CheckBox>
+        </Border>
+    </DataTemplate>
+
+    <Style TargetType="local:DimensionButton">
+        <!--<Style.Resources>
+            <Style TargetType="local:DropDownButton">
+                <Setter Property="Margin" Value="6"/>
+            </Style>
+        </Style.Resources>-->
+        <Setter Property="PopupStyle">
+            <Setter.Value>
+                <Style TargetType="Popup">
+                    <!--<Setter Property="AllowsTransparency" Value="True"/>-->
+                    <Setter Property="VerticalOffset" Value="0"/>
+                    <!--<Setter Property="StaysOpen" Value="True"/>-->
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ButtonStyle">
+            <Setter.Value>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="6"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DimensionButton">
+                    <local:DropDownButton ui:FrameworkElementExtensions.AncestorType="local:DimensionButton"
+                            DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor)}"
+                            ItemTemplate="{StaticResource DimensionButtonItemTemplate}"
+                            Command="{Binding Command}"
+                            Content="{Binding Content}" 
+                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                            ButtonStyle="{Binding ButtonStyle}"
+                            ListBoxStyle="{Binding ListBoxStyle}"
+                            ListBoxItemStyle="{Binding ListBoxItemStyle}"
+                            PopupStyle="{Binding PopupStyle}" >
+
+                        <!--<local:DropDownButton.ItemsSource>
+
+                            <x:Array Type="local:DimensionAction">
+                                <local:DimensionAction>SortAscending</local:DimensionAction>
+                                <local:DimensionAction>SortDescending</local:DimensionAction>
+                                <local:DimensionAction>Hide</local:DimensionAction>
+                            </x:Array>
+                        </local:DropDownButton.ItemsSource>-->
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:EventTriggerBehavior EventName="SelectionChanged">
+                                <Interactions:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding CommandParameter}">
+                                </Interactions:InvokeCommandAction>
+                            </Interactions:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                    </local:DropDownButton>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="CommandParameter">
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource DimensionEventArgsConverter}" Mode="OneWay">
+                    <Binding RelativeSource="{RelativeSource Self}" Path="Dimension" />
+                    <Binding RelativeSource="{RelativeSource Self}" Path="SelectedItem" />
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>-->
+    </Style>
+
+    <Style TargetType="local:DropDownButton">
+        <Setter Property="ButtonStyle">
+            <Setter.Value>
+                <Style TargetType="Button">
+                    <Setter Property="Padding" Value="6"/>
+                    <!--<Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="5" Opacity="0.4"/>
+                        </Setter.Value>
+                    </Setter>-->
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DropDownButton">
+                    <StackPanel ui:FrameworkElementExtensions.AncestorType="local:DropDownButton"
+                        Orientation="Vertical" DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor)}">
+                        <StackPanel.Resources>
+                            <Style TargetType="Popup">
+                                <!--<Setter Property="AllowsTransparency" Value="True"/>-->
+                                <!--<Setter Property="Placement" Value="Bottom"/>-->
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:EventTriggerBehavior EventName="MouseLeave">
+                                <Interactions:InvokeCommandAction Command="{Binding MouseLeaveCommand}">
+                                </Interactions:InvokeCommandAction>
+                            </Interactions:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+
+
+
+                        <Button x:Name="MartyMcButton" Style="{TemplateBinding ButtonStyle}" Content="{TemplateBinding Content}" Command="{Binding ToggleDropDownCommand}"></Button>
+                        <Popup IsOpen="{Binding IsDropDownOpen}" PlacementTarget="{Binding ElementName=MartyMcButton}" Style="{Binding PopupStyle}">
+                            <Border Margin="0,0,8,8" Padding="{Binding PopupPadding}" >
+                                <!--<Border.Effect>
+                                    <DropShadowEffect BlurRadius="5" Opacity="0.4"/>
+                                </Border.Effect>-->
+                                <ListBox x:Name="PART_ListBox" ui:FrameworkElementExtensions.AncestorType="local:DropDownButton"
+                                         ItemsSource="{Binding ItemsSource}" 
+                                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                                         ItemTemplate="{Binding ItemTemplate}" 
+                                         Style="{TemplateBinding ListBoxStyle}" ItemContainerStyle="{TemplateBinding ListBoxItemStyle}" >
+
+
+                                    <Interactivity:Interaction.Behaviors>
+                                        <Interactions:EventTriggerBehavior EventName="SelectionChanged">
+                                            <Interactions:InvokeCommandAction Command="{Binding MouseLeaveCommand}"/>
+                                            <Interactions:ChangePropertyAction PropertyName="IsDropDownOpen" TargetObject="(ui:FrameworkElementExtensions.Ancestor)" Value="False"/>
+                                        </Interactions:EventTriggerBehavior>
+                                    </Interactivity:Interaction.Behaviors>
+                                </ListBox>
+                            </Border>
+                        </Popup>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
