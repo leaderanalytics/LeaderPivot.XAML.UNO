@@ -142,9 +142,6 @@
         </Style.Resources>-->
     </Style>
 
-
-
-
     <Style TargetType="local:GroupHeaderCell" >
         <Setter Property="Template">
             <Setter.Value>
@@ -210,4 +207,43 @@
         </Setter>
     </Style>
 
+    <Style TargetType="local:DimensionContainerCell">
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DimensionContainerCell" >
+                    <Border Background="{TemplateBinding Background}" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                            BorderThickness="0"
+                            Padding="{Binding (ui:FrameworkElementExtensions.Ancestor).CellPadding}"
+                            DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor).CellPadding}">
+
+                        <ScrollViewer 
+                            Visibility="{Binding DisplayDimensionButtons, Converter={StaticResource BoolToVisibilityConverter}}"  
+                            VerticalScrollBarVisibility="Auto"
+                            HorizontalScrollBarVisibility="Auto"
+                            HorizontalAlignment="Left">
+                            <ItemsControl Name="DimensionItems" 
+                                          ItemsSource="{TemplateBinding Dimensions}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:DimensionButton 
+                                            Content="{Binding DisplayValue}" 
+                                            Dimension="{Binding}" 
+                                            SelectionChangedCommand="{Binding (ui:FrameworkElementExtensions.Ancestor).DimensionEventCommand}" >
+                                        </local:DimensionButton>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" ></StackPanel>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>
