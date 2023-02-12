@@ -4,7 +4,8 @@
     xmlns:local="using:LeaderAnalytics.LeaderPivot.XAML.UNO"
     xmlns:ui="using:CommunityToolkit.WinUI.UI"
     xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers"
-    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors">
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core">
     
     
 
@@ -299,8 +300,13 @@
                                           Visibility="{Binding ViewBuilder.HiddenDimensionsVisibility}"
                                           ItemsSource="{Binding ViewBuilder.HiddenDimensions}"
                                           SelectedItem="{x:Null}">
-                                    
-                                    
+
+                                    <Interactions:EventTriggerBehavior EventName="SelectionChanged">
+                                        <Interactions:InvokeCommandAction Command="{Binding DimensionEventCommand}">
+                                            <!--<Interactions:InvokeCommandAction.CommandParameter>
+                                            </Interactions:InvokeCommandAction.CommandParameter>-->
+                                        </Interactions:InvokeCommandAction>
+                                    </Interactions:EventTriggerBehavior>
                                 </ComboBox>
                             </Grid>
                         </ScrollViewer>
