@@ -21,6 +21,11 @@
     <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Converters\DimensionEventArgsConverter.cs" />
+    <Compile Remove="Converters\DimensionEventCheckedConverter.cs" />
+    <Compile Remove="Converters\DimensionEventEnabledConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Themes\Generic.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -29,15 +34,13 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="LeaderAnalytics.LeaderPivot" Version="1.0.16-beta.2" />
-	<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.3.1-uno.2"/>
+	<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.3.1-uno.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows10.0.18362'">
-	  <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2"/>
+	  <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' != 'net7.0-windows10.0.18362'">
-    <PackageReference Include="Uno.CommunityToolkit.WinUI.UI">
-	 <Version>7.1.100</Version>
-	</PackageReference>
+	  <PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100"/>
   </ItemGroup>
   <PropertyGroup>
     <RootNamespace>LeaderAnalytics.LeaderPivot.XAML.UNO</RootNamespace>

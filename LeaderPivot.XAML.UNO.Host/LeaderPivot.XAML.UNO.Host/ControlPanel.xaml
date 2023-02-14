@@ -5,11 +5,89 @@
     xmlns:local="using:LeaderPivot.XAML.UNO.Host"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <UserControl.Resources>
+        <local:NegateVisibilityConverter x:Key="NegateVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid 
+        ui:FrameworkElementExtensions.AncestorType="local:ControlPanel"
+        DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor)}" VerticalAlignment="Top" Background="Cornsilk" >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="CheckBox" >
+                <Setter Property="Margin" Value="0,0,20,0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="StackPanel">
+                <Setter Property="Margin" Value="0,10,0,0"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Orientation" Value="Horizontal"/>
+            </Style>
 
-    <Grid>
+        </Grid.Resources>
+        <TextBlock Text="Sales Data" Grid.RowSpan="2" FontSize="30" Margin="20"></TextBlock>
+        <StackPanel Grid.Column="1" Visibility="{Binding PanelVisibility}">
+            <CheckBox IsChecked="{Binding DisplayGrandTotalOption}" Content="Grand Totals Option"/>
+            <CheckBox IsChecked="{Binding DisplayDimensionButtons}" Content="Dimension Buttons"/>
+            <CheckBox IsChecked="{Binding DisplayMeasureSelectors}" Content="Measure Selectors"/>
+            <CheckBox IsChecked="{Binding DisplayReloadDataButton}" Content="Reload Data Button"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0"  >
+                <TextBlock Text="Theme:" Margin="0,2,6,0" VerticalAlignment="Center" />
+                <ComboBox Width="120" BorderBrush="Black" BorderThickness=".5" Padding="6" VerticalAlignment="Center">
 
+                    <Interactions:EventTriggerBehavior EventName="SelectionChanged">
+                        <Interactions:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}" />
+                    </Interactions:EventTriggerBehavior>
+                    
+                    <ComboBoxItem Content="Primary" IsSelected="True" />
+                    <ComboBoxItem Content="Light" />
+                    <ComboBoxItem Content="Secondary" />
+                    <ComboBoxItem Content="Dark" />
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2" Visibility="{Binding PanelVisibility}" >
+            <StackPanel Orientation="Horizontal" Margin="0">
+                <TextBlock Text="{Binding FontSizeString}" VerticalAlignment="Center"/>
+                <Slider Value="{Binding PivotControlFontSize}" Minimum="6" Maximum="20" Width="200" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0">
+                <TextBlock Text="{Binding CellPaddingString}" VerticalAlignment="Center"/>
+                <Slider Value="{Binding CellPadding}" Minimum="0" Maximum="10" Width="200" VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+        <Button 
+            Grid.RowSpan="2" Grid.Column="2" 
+            VerticalAlignment="Center" HorizontalAlignment="Center" 
+            Margin="20" Padding="6" 
+            Command="{Binding TogglePanelVisibilityCommand}">
+            
+            
+            <Button.Content>
+                <StackPanel Margin="0">
+                    <TextBlock Visibility="{Binding PanelVisibility}">
+                        <Run FontFamily="Segoe MDL2 Assets" Text="&#xEB11;" />
+                        <Run Text="Controls" />
+                    </TextBlock>
+                    <TextBlock Visibility="{Binding PanelVisibility, Converter={StaticResource NegateVisibilityConverter}}">
+                        <Run FontFamily="Segoe MDL2 Assets" Text="&#xEB0F;" />
+                        <Run Text="Controls" />
+                    </TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
     </Grid>
 </UserControl>
