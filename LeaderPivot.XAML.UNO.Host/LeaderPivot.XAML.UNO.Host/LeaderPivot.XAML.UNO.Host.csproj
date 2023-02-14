@@ -34,7 +34,7 @@
     <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.27" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='net7.0-windows10.0.18362'">
-	<PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100"/> 
+	<PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100" /> 
     <Content Include="Assets\**" />
     <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
     <ApplicationDefinition Include="App.xaml" Condition="exists('App.xaml')" />
@@ -45,64 +45,29 @@
   <ItemGroup>
     <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="ControlPanel.xaml" />
-    <None Remove="Themes\PivotStyles.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Remove="Themes\Dark.xaml" />
-    <Page Remove="Themes\Light.xaml" />
-    <Page Remove="Themes\PivotStyles.xaml" />
-    <Page Remove="Themes\Primary.xaml" />
-    <Page Remove="Themes\Secondary.xaml" />
-  </ItemGroup>
-  <ItemGroup>
+   <ItemGroup>
     <ProjectReference Include="..\..\LeaderPivot.XAML.UNO\LeaderPivot.XAML.UNO.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <SourceGeneratorInput Remove="ControlPanel.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <UpToDateCheckInput Remove="ControlPanel.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Themes\Dark.xaml">
+    <Page Update="Themes\Dark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Themes\Light.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Content>
-    <Content Include="Themes\PivotStyles.xaml">
+    </Page>
+    <Page Update="Themes\Light.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Themes\Primary.xaml">
+    </Page>
+    <Page Update="Themes\PivotStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Themes\Secondary.xaml">
+    </Page>
+    <Page Update="Themes\Primary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Themes\Dark.xaml">
+    </Page>
+    <Page Update="Themes\Secondary.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Themes\Light.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Themes\Primary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Themes\Secondary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="ControlPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
 	
