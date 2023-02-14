@@ -14,9 +14,9 @@
     <UserControl.Resources>
         <local:NegateVisibilityConverter x:Key="NegateVisibilityConverter" />
     </UserControl.Resources>
-    <Grid 
-        ui:FrameworkElementExtensions.AncestorType="local:ControlPanel"
-        DataContext="{Binding (ui:FrameworkElementExtensions.Ancestor)}" VerticalAlignment="Top" Background="Cornsilk" >
+    <Grid ui:FrameworkElementExtensions.AncestorType="local:ControlPanel"
+          
+         VerticalAlignment="Top" Background="Cornsilk" >
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -39,19 +39,20 @@
 
         </Grid.Resources>
         <TextBlock Text="Sales Data" Grid.RowSpan="2" FontSize="30" Margin="20"></TextBlock>
-        <StackPanel Grid.Column="1" Visibility="{Binding PanelVisibility}">
-            <CheckBox IsChecked="{Binding DisplayGrandTotalOption}" Content="Grand Totals Option"/>
-            <CheckBox IsChecked="{Binding DisplayDimensionButtons}" Content="Dimension Buttons"/>
-            <CheckBox IsChecked="{Binding DisplayMeasureSelectors}" Content="Measure Selectors"/>
-            <CheckBox IsChecked="{Binding DisplayReloadDataButton}" Content="Reload Data Button"/>
+        <StackPanel Grid.Column="1" Visibility="{x:Bind PanelVisibility}">
+            <CheckBox IsChecked="{x:Bind DisplayGrandTotalOption}" Content="Grand Totals Option"/>
+            <CheckBox IsChecked="{x:Bind DisplayDimensionButtons}" Content="Dimension Buttons"/>
+            <CheckBox IsChecked="{x:Bind DisplayMeasureSelectors}" Content="Measure Selectors"/>
+            <CheckBox IsChecked="{x:Bind DisplayReloadDataButton}" Content="Reload Data Button"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0"  >
                 <TextBlock Text="Theme:" Margin="0,2,6,0" VerticalAlignment="Center" />
                 <ComboBox Width="120" BorderBrush="Black" BorderThickness=".5" Padding="6" VerticalAlignment="Center">
-
-                    <Interactions:EventTriggerBehavior EventName="SelectionChanged">
-                        <Interactions:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}" />
-                    </Interactions:EventTriggerBehavior>
-                    
+                
+                <!--<Interactivity:Interacton.Behaviors>
+                        <Interactions:EventTriggerBehavior EventName="SelectionChanged">
+                            <Interactions:InvokeCommandAction Command="{x:Bind SelectedThemeChangedCommand}" />
+                        </Interactions:EventTriggerBehavior>
+                    </Interactivity:Interacton.Behaviors>-->
                     <ComboBoxItem Content="Primary" IsSelected="True" />
                     <ComboBoxItem Content="Light" />
                     <ComboBoxItem Content="Secondary" />
