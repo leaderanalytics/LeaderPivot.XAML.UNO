@@ -50,24 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Themes\Dark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     
     </Page>
     <Page Update="Themes\Light.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     
     </Page>
     <Page Update="Themes\PivotStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     
     </Page>
     <Page Update="Themes\Primary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     
     </Page>
     <Page Update="Themes\Secondary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     
     </Page>
   </ItemGroup>
 	
