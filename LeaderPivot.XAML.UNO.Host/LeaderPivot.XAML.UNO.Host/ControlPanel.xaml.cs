@@ -202,7 +202,7 @@ public sealed partial class ControlPanel : UserControl
 
     private void SetResourceDictionary(string themeName, bool add)
     {
-        Uri uri = new Uri($"ms-appx:///Themes/{themeName}.xaml");
+        Uri uri = new Uri($"ms-appx:///LeaderPivot.XAML.UNO.Host/Themes/{themeName}.xaml");
 
         if (add)
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });

@@ -25,16 +25,18 @@
     <PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
     <PackageReference Include="Uno.WinUI" Version="4.7.37" />
 	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
-	<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.3.1-uno.2" />  
+	 
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net7.0-windows10.0.18362'">
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.230118.102" />
 	<PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
+	<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" /> 
     <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22000.27" />
     <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.27" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='net7.0-windows10.0.18362'">
-	<PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100" /> 
+	<PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100" />
+	<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.3.0" /> 
     <Content Include="Assets\**" />
     <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
     <ApplicationDefinition Include="App.xaml" Condition="exists('App.xaml')" />
