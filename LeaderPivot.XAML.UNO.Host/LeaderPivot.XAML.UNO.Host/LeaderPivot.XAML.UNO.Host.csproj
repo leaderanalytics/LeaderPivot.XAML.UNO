@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='net7.0-windows10.0.18362'">
 	<PackageReference Include="Uno.CommunityToolkit.WinUI.UI" Version="7.1.100" />
-	<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.3.0" /> 
+	<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.3.1-uno.2" />
     <Content Include="Assets\**" />
     <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
     <ApplicationDefinition Include="App.xaml" Condition="exists('App.xaml')" />
