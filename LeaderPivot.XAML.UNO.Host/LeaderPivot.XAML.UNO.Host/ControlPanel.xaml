@@ -48,11 +48,11 @@
                 <TextBlock Text="Theme:" Margin="0,2,6,0" VerticalAlignment="Center" />
                 <ComboBox Width="120" BorderBrush="Black" BorderThickness=".5" Padding="6" VerticalAlignment="Center">
                 
-                    <Interactivity:Interacton.Behaviors>
+                    <Interactivity:Interaction.Behaviors>
                         <Interactions:EventTriggerBehavior EventName="SelectionChanged">
                             <Interactions:InvokeCommandAction Command="{x:Bind SelectedThemeChangedCommand}" />
                         </Interactions:EventTriggerBehavior>
-                    </Interactivity:Interacton.Behaviors>
+                    </Interactivity:Interaction.Behaviors>
                     <ComboBoxItem Content="Primary" IsSelected="True" />
                     <ComboBoxItem Content="Light" />
                     <ComboBoxItem Content="Secondary" />
@@ -60,30 +60,30 @@
                 </ComboBox>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="2" Visibility="{Binding PanelVisibility}" >
+        <StackPanel Grid.Column="1" Grid.Row="2" Visibility="{x:Bind PanelVisibility}" >
             <StackPanel Orientation="Horizontal" Margin="0">
-                <TextBlock Text="{Binding FontSizeString}" VerticalAlignment="Center"/>
-                <Slider Value="{Binding PivotControlFontSize}" Minimum="6" Maximum="20" Width="200" VerticalAlignment="Center"/>
+                <TextBlock Text="{x:Bind FontSizeString}" VerticalAlignment="Center"/>
+                <Slider Value="{x:Bind PivotControlFontSize}" Minimum="6" Maximum="20" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0">
-                <TextBlock Text="{Binding CellPaddingString}" VerticalAlignment="Center"/>
-                <Slider Value="{Binding CellPadding}" Minimum="0" Maximum="10" Width="200" VerticalAlignment="Center"/>
+                <TextBlock Text="{x:Bind CellPaddingString}" VerticalAlignment="Center"/>
+                <Slider Value="{x:Bind CellPadding}" Minimum="0" Maximum="10" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <Button 
             Grid.RowSpan="2" Grid.Column="2" 
             VerticalAlignment="Center" HorizontalAlignment="Center" 
             Margin="20" Padding="6" 
-            Command="{Binding TogglePanelVisibilityCommand}">
+            Command="{x:Bind TogglePanelVisibilityCommand}">
             
             
             <Button.Content>
                 <StackPanel Margin="0">
-                    <TextBlock Visibility="{Binding PanelVisibility}">
+                    <TextBlock Visibility="{x:Bind PanelVisibility}">
                         <Run FontFamily="Segoe MDL2 Assets" Text="&#xEB11;" />
                         <Run Text="Controls" />
                     </TextBlock>
-                    <TextBlock Visibility="{Binding PanelVisibility, Converter={StaticResource NegateVisibilityConverter}}">
+                    <TextBlock Visibility="{x:Bind PanelVisibility, Converter={StaticResource NegateVisibilityConverter}}">
                         <Run FontFamily="Segoe MDL2 Assets" Text="&#xEB0F;" />
                         <Run Text="Controls" />
                     </TextBlock>
