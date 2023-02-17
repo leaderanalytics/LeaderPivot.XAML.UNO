@@ -20,7 +20,7 @@ using System.Windows.Input;
 
 namespace LeaderPivot.XAML.UNO.Host;
 
-public sealed partial class ControlPanel : UserControl
+public sealed partial class ControlPanel : UserControl, INotifyPropertyChanged
 {
     public bool DisplayGrandTotalOption
     {
