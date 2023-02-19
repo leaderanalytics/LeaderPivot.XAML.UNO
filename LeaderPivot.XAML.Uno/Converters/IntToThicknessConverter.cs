@@ -1,10 +1,10 @@
 ﻿namespace LeaderAnalytics.LeaderPivot.XAML.UNO.Converters;
 
-internal class SelectedItemConverter : IValueConverter
+internal class IntToThicknessConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
-        return value == parameter;
+        return new Thickness(System.Convert.ToDouble(value));
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)

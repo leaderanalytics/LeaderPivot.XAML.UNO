@@ -1,5 +1,5 @@
 ﻿
-namespace LeaderAnalytics.LeaderPivot.XAML.WPF.Converters;
+namespace LeaderAnalytics.LeaderPivot.XAML.UNO.Converters;
 
 internal class DimensionActionDescriptionConverter : IValueConverter
 {
