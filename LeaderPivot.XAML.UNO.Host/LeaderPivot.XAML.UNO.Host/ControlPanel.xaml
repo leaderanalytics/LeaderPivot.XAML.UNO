@@ -40,10 +40,10 @@
         </Grid.Resources>
         <TextBlock Text="Sales Data" Grid.RowSpan="2" FontSize="30" Margin="20"></TextBlock>
         <StackPanel Grid.Column="1" Visibility="{x:Bind PanelVisibility, Mode=OneWay}">
-            <CheckBox IsChecked="{x:Bind DisplayGrandTotalOption}" Content="Grand Totals Option"/>
-            <CheckBox IsChecked="{x:Bind DisplayDimensionButtons}" Content="Dimension Buttons"/>
-            <CheckBox IsChecked="{x:Bind DisplayMeasureSelectors}" Content="Measure Selectors"/>
-            <CheckBox IsChecked="{x:Bind DisplayReloadDataButton}" Content="Reload Data Button"/>
+            <CheckBox IsChecked="{x:Bind DisplayGrandTotalOption, Mode=TwoWay}" Content="Grand Totals Option"/>
+            <CheckBox IsChecked="{x:Bind DisplayDimensionButtons, Mode=TwoWay}" Content="Dimension Buttons"/>
+            <CheckBox IsChecked="{x:Bind DisplayMeasureSelectors, Mode=TwoWay}" Content="Measure Selectors"/>
+            <CheckBox IsChecked="{x:Bind DisplayReloadDataButton, Mode=TwoWay}" Content="Reload Data Button"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0"  >
                 <TextBlock Text="Theme:" Margin="0,2,6,0" VerticalAlignment="Center" />
                 <ComboBox Width="120" BorderBrush="Black" BorderThickness=".5" Padding="6" VerticalAlignment="Center">
@@ -63,11 +63,11 @@
         <StackPanel Grid.Column="1" Grid.Row="2" Visibility="{x:Bind PanelVisibility, Mode=OneWay}" >
             <StackPanel Orientation="Horizontal" Margin="0">
                 <TextBlock Text="{x:Bind FontSizeString, Mode=OneWay}" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                <Slider Value="{x:Bind PivotControlFontSize, Mode=OneWay}" Minimum="6" Maximum="20" Width="200" VerticalAlignment="Center"/>
+                <Slider Value="{x:Bind PivotControlFontSize, Mode=TwoWay}" Minimum="6" Maximum="20" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0">
-                <TextBlock Text="{x:Bind CellPaddingString}" VerticalAlignment="Center" Margin="10,0,6,0"/>
-                <Slider Value="{x:Bind CellPadding}" Minimum="0" Maximum="10" Width="200" VerticalAlignment="Center"/>
+                <TextBlock Text="{x:Bind CellPaddingString, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0,6,0"/>
+                <Slider Value="{x:Bind CellPadding, Mode=TwoWay}" Minimum="0" Maximum="10" Width="200" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <Button 

@@ -21,9 +21,11 @@ namespace LeaderPivot.XAML.UNO.Host;
 /// </summary>
 public sealed partial class MainPage : Page
 {
+    public MainWindowViewModel VM { get; set; }
+
     public MainPage()
     {
         this.InitializeComponent();
-        DataContext = new MainWindowViewModel();
+        VM = new MainWindowViewModel();
     }
 }

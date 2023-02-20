@@ -12,7 +12,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LeaderPivot.XAML.UNO.Host;
 
-internal partial class MainWindowViewModel : ObservableObject
+public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
     private PivotViewBuilder<SalesData> _ViewBuilder;

@@ -264,27 +264,31 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Button Content="Reload Data" 
-                                        Style="{TemplateBinding ReloadButtonStyle}" Height="25" Width="80"
-                                        Command="{Binding ReloadDataCommand}" 
-                                        Visibility="{Binding DisplayReloadDataButton, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ItemsControl ItemsSource="{Binding ViewBuilder.Measures}" Grid.Row="1" Margin="3,10,0,0"
-                                              Visibility="{Binding DisplayMeasureSelectors, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Button Content="Reload Data" ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                                        Style="{Binding ReloadButtonStyle}" Height="25" Width="80"
+                                        Command="{Binding (ui:FrameworkElementExtensions.Ancestor).ReloadDataCommand, RelativeSource={RelativeSource Self}}" 
+                                        Visibility="{Binding (ui:FrameworkElementExtensions.Ancestor).DisplayReloadDataButton, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                                <ItemsControl ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                                              ItemsSource="{Binding (ui:FrameworkElementExtensions.Ancestor).ViewBuilder.Measures, RelativeSource={RelativeSource Self}}" Grid.Row="1" Margin="3,10,0,0"
+                                              Visibility="{Binding (ui:FrameworkElementExtensions.Ancestor).DisplayMeasureSelectors, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <CheckBox 
+                                            <CheckBox ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
                                                 Content="{Binding Item.DisplayValue}" 
-                                                IsChecked="{Binding IsSelected }" 
-                                                Command="{Binding (ui:FrameworkElementExtensions.Ancestor).ToggleMeasureEnabledCommand}" 
+                                                IsChecked="{Binding IsSelected}" 
+                                                Command="{Binding (ui:FrameworkElementExtensions.Ancestor).ToggleMeasureEnabledCommand, RelativeSource={RelativeSource Self}}" 
                                                 CommandParameter="{Binding}"
-                                                Style="{Binding (ui:FrameworkElementExtensions.Ancestor).MeasureCheckBoxStyle}" Padding="2" />
+                                                Style="{Binding (ui:FrameworkElementExtensions.Ancestor).MeasureCheckboxStyle, RelativeSource={RelativeSource Self}}" Padding="2" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-                                <CheckBox Content="Grand Totals" Margin="3,0,0,0"
-                                          IsChecked="{Binding ViewBuilder.DisplayGrandTotals}" Command="{Binding ReloadDataCommand}" Padding="2" 
-                                          Visibility="{Binding DisplayGrandTotalOption, Converter={StaticResource BoolToVisibilityConverter}}"
-                                          Style="{TemplateBinding MeasureCheckBoxStyle}"
+                                <CheckBox ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                                          Content="Grand Totals" Margin="3,0,0,0"
+                                          IsChecked="{Binding (ui:FrameworkElementExtensions.Ancestor).ViewBuilder.DisplayGrandTotals, RelativeSource={RelativeSource Self}}" 
+                                          Command="{Binding (ui:FrameworkElementExtensions.Ancestor).ReloadDataCommand, RelativeSource={RelativeSource Self}}" Padding="2" 
+                                          Visibility="{Binding (ui:FrameworkElementExtensions.Ancestor).DisplayGrandTotalOption, RelativeSource={RelativeSource Self}, Converter={StaticResource BoolToVisibilityConverter}}"
+                                          Style="{Binding (ui:FrameworkElementExtensions.Ancestor).MeasureCheckboxStyle, RelativeSource={RelativeSource Self}}"
                                           Grid.Row="2" />
 
                                 <local:DimensionContainerCell BorderThickness="0" Margin="0,3,0,0"

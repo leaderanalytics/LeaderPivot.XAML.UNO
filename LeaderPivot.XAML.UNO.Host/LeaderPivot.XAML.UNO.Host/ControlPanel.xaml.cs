@@ -197,7 +197,10 @@ public sealed partial class ControlPanel : UserControl, INotifyPropertyChanged
 
     private void SelectedThemeChangedCommandHandler(SelectionChangedEventArgs e)
     {
-        
+        string remove = ((ComboBoxItem)e.RemovedItems[0]).Content.ToString();
+        string add = ((ComboBoxItem)e.AddedItems[0]).Content.ToString();
+        SetResourceDictionary(remove, false);
+        SetResourceDictionary(add, true);
     }
 
     private void SetResourceDictionary(string themeName, bool add)
