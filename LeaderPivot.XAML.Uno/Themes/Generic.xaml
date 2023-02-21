@@ -291,9 +291,10 @@
                                           Style="{Binding (ui:FrameworkElementExtensions.Ancestor).MeasureCheckboxStyle, RelativeSource={RelativeSource Self}}"
                                           Grid.Row="2" />
 
-                                <local:DimensionContainerCell BorderThickness="0" Margin="0,3,0,0"
+                                <local:DimensionContainerCell ui:FrameworkElementExtensions.AncestorType="local:LeaderPivotControl"
+                                    BorderThickness="0" Margin="0,3,0,0"
                                     IsRows="True" 
-                                    Dimensions="{Binding ViewBuilder.RowDimensions}" 
+                                    Dimensions="{Binding (ui:FrameworkElementExtensions.Ancestor).ViewBuilder.RowDimensions, RelativeSource={RelativeSource Self}}" 
                                     Grid.Row="3"/>
 
 
